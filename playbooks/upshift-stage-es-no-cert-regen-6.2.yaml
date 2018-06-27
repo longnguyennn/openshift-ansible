@@ -27,7 +27,7 @@
       openshift_logging_es_nodeselector: {}
       openshift_logging_elasticsearch_node_topology:
       - node_role:  master
-        replicas: 3
+        replicas: 1
         storage_group: 65534
         node_storage_type: emptydir
         limits:
@@ -39,32 +39,14 @@
         storage_group: 65534
         node_storage_type: pvc
         limits:
-          memory: 16Gi
+          memory: 2Gi
         requests:
           cpu: 1000m
-          memory: 4Gi
+          memory: 1Gi
         pvc_name: dh-stage-storage-pvc-1
-      - node_role:  clientdata
-        storage_group: 65534
-        node_storage_type: pvc
-        limits:
-          memory: 16Gi
-        requests:
-          cpu: 1000m
-          memory: 4Gi
-        pvc_name: dh-stage-storage-pvc-2
-      - node_role:  clientdata
-        storage_group: 65534
-        node_storage_type: pvc
-        limits:
-          memory: 16Gi
-        requests:
-          cpu: 1000m
-          memory: 4Gi
-        pvc_name: dh-stage-storage-pvc-3
       openshift_logging_elasticsearch_log_appenders: console
       openshift_logging_elasticsearch_node_topology_defined: "true"
       openshift_logging_elasticsearch_allow_external: true
       openshift_logging_image_prefix: quay.io/longnguyennn/
       openshift_logging_image_pull_secret: ''
-      openshift_logging_es_hostname: 192.168.42.126.nip.io
+      openshift_logging_es_hostname: 192.168.42.3.nip.io

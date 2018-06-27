@@ -15,6 +15,16 @@
 #    elasticsearch_name: "{{ 'logging-elasticsearch' ~ ( (openshift_logging_elasticsearch_ops_deployment | default(false) | bool) | ternary('-ops', '')) }}"
 #    es_component: "{{ 'es' ~ ( (openshift_logging_elasticsearch_ops_deployment | default(false) | bool) | ternary('-ops', '') ) }}"
 
+- name: Generate certificate
+  include_role: 
+    name: openshift_logging_certs
+  vars:
+    svc_name: elastic1
+    openshift_logging_kibana_hostname: "kibana.{{ openshift_logging_es_hostname }}"
+
+- debug:
+    msg: "kibana.{{ openshift_logging_es_hostname }}"
+
 - name: Set default image variables based on openshift_deployment_type
   include_vars: "{{ var_file_name }}"
   with_first_found:

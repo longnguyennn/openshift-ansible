@@ -48,7 +48,7 @@ spec:
       containers:
         -
           name: "kibana"
-          image: "{{ openshift_logging_kibana_image_prefix }}logging-kibana5:{{ openshift_logging_kibana_image_version }}"
+          image: "{{ openshift_logging_kibana_image_prefix }}logging-kibana-6.2:{{ openshift_logging_kibana_image_version }}"
           imagePullPolicy: IfNotPresent
 {% if (kibana_memory_limit is defined and kibana_memory_limit is not none and kibana_memory_limit != "") or (kibana_cpu_limit is defined and kibana_cpu_limit is not none and kibana_cpu_limit != "") or (kibana_cpu_request is defined and kibana_cpu_request is not none and kibana_cpu_request != "") %}
           resources:
